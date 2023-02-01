@@ -129,16 +129,25 @@
   </body>
 
   <script>
+
+    var num_amount = 0
+    var num_price = 0
+    var amount = document.getElementById('total-amount')
+    var price = document.getElementById('total-price')
+
     // Setup Event Listener
     for (let el of document.getElementsByClassName('product')) {
       el.addEventListener('click', onSelectProduct)
       el.addEventListener('click', add)
+      el.addEventListener('click', sum)
       
     }
 
 
 
     function add(event){
+
+
       let parent = document.getElementsByTagName('tbody')
       let row = document.createElement('tr')
       
@@ -173,9 +182,11 @@
 
       // element.parentNode.removeChild(element);
 
-      console.log(row.childNodes)
-      btn.addEventListener("click", () => {row.parentNode.removeChild(row)})
-      
+      btn.addEventListener("click", () => {
+        row.parentNode.removeChild(row);
+        amount.innerHTML = (num_amount-=1).toFixed(2);
+       price.innerHTML = (num_price -= parseInt(this.childNodes[3].innerHTML)).toFixed(2);
+      })
     }
 
     function onSelectProduct (event) {
@@ -188,5 +199,16 @@
       // alert(event.currentTarget.childNodes[1].innerHTML + " " + event.currentTarget.childNodes[3].innerHTML);
     }
 
+
+    function sum(event){
+      amount.innerHTML = (num_amount+=1).toFixed(2)
+      price.innerHTML = (num_price += parseInt(this.childNodes[3].innerHTML)).toFixed(2)
+
+      
+
+      // this = event.currentTarget
+      // console.log(this.childNodes)
+      // console.log(event.currentTarget)
+    }
   </script>
 </html>
