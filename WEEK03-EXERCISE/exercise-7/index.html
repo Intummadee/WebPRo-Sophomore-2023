@@ -75,12 +75,12 @@
             </thead>
             <tbody></tbody>
             <!-- PROBLEM 7.4 -->
-            <!-- <tfoot>
+            <tfoot>
               <th></th>
               <th id="total-amount"></th>
               <th id="total-price"></th>
               <th></th>
-            </tfoot>   -->
+            </tfoot>  
           </table>
         </div>
       </div>
@@ -153,26 +153,28 @@
 
       let btn = document.createElement('button')
       btn.innerHTML = "Del"
-      btn.addEventListener("click", () => {parent.removechild(event.currentTarget)})
 
-
+      
       col.appendChild(text1)
       col2.appendChild(text2)
       col3.appendChild(text3)
       col4.appendChild(btn)
-
-
-
+      
+      
+      
       row.appendChild(col)
       row.appendChild(col2)
       row.appendChild(col3)
       row.appendChild(col4)
-
-
-
+      
+      
+      
       parent[0].appendChild(row)
-      console.log(event.currentTarget.childNodes)
 
+      // element.parentNode.removeChild(element);
+
+      console.log(row.childNodes)
+      btn.addEventListener("click", () => {row.parentNode.removeChild(row)})
       
     }
 
@@ -185,5 +187,6 @@
 
       // alert(event.currentTarget.childNodes[1].innerHTML + " " + event.currentTarget.childNodes[3].innerHTML);
     }
+
   </script>
 </html>
