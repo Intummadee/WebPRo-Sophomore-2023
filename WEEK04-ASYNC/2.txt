@@ -52,8 +52,8 @@ function stopTime() {
 
     var timeout;
     
-    // var defalutTime = document.getElementById('Time').value
-    var defalutTime = 130
+    var defalutTime = document.getElementById('Time').value
+    // var defalutTime = 5
     
     
     
@@ -74,10 +74,6 @@ function stopTime() {
     
 
     timeout = setInterval(() => {
-        if(sec === 0 && divMinute.innerHTML === "00"){
-            divSecond.innerHTML = "00"
-            clearTimeout(timeout);
-        }
         if(sec === 0){
             minute--
             if(minute === 0){
@@ -92,27 +88,16 @@ function stopTime() {
         if(sec < 10){
             divSecond.innerHTML = "0" +   sec  
         }
-
+        
         divMinute.innerHTML = minute
         if(minute < 10){
             divMinute.innerHTML = "0" +   minute  
         }
-
+        
         console.log(minute, sec)
+
+        if(divSecond.innerHTML == "00" && divMinute.innerHTML == "00"){
+            clearTimeout(timeout);
+        }  
     }, 1000)
-    
-    
-    // if(minute < 10){
-    //     divMinute.innerHTML = "0" +   minute  
-    // }
-    // else{
-    //     divMinute.innerHTML = minute
-    // }
-    
-    
-    
-    
 }
-
-
-// console.log()
