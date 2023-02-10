@@ -1,0 +1,118 @@
+// ข้อ 2.1
+
+function display(msg) {
+    let div = document.getElementById('ex01-div')
+    div.innerHTML = msg
+}
+
+// onclick="showConfirm(display)
+
+function showConfirm(callback) {
+    // You code here
+    if (window.confirm("Show Confirm?")) {
+        display("ยืนยันจ้า")
+    }
+    else{
+        display("ไม่ดีกว่า")
+    }
+    
+    
+    console.log(callback)
+   
+
+}
+
+// ข้อ 2.2
+
+function start() {
+    // hint: ส่ง callback function เข้าไปเป็น argument ของ setTimeout()
+
+    setTimeout(() => {
+        console.log("Hello World")
+        setTimeout(() => {
+            console.log("Hello World")
+            setTimeout(() => {
+                console.log("Hello World")
+            }, 3000)
+        }, 2000)
+    }, 0)
+
+}
+
+
+//<span id="setMinute"></span>
+//<span>:</span>
+//<span id="setSecond"></span>
+
+
+// ข้อ 2.3
+function stopTime() {
+    var divMinute = document.getElementById('setMinute')
+    var divSecond = document.getElementById('setSecond')
+
+    var timeout;
+    
+    // var defalutTime = document.getElementById('Time').value
+    var defalutTime = 130
+    
+    
+    
+    var minute = Math.floor(defalutTime / 60); // 119 / 60 = 1
+    var sec = defalutTime % 60;
+    console.log(minute + sec) // 1,12
+    
+    
+    divSecond.innerHTML = sec
+    
+    if(minute < 10){
+        divMinute.innerHTML = "0" +   minute  
+    }
+    else{
+        divMinute.innerHTML = minute
+    }
+    
+    
+
+    timeout = setInterval(() => {
+        if(sec === 0 && divMinute.innerHTML === "00"){
+            divSecond.innerHTML = "00"
+            clearTimeout(timeout);
+        }
+        if(sec === 0){
+            minute--
+            if(minute === 0){
+                divMinute.innerHTML = "00"
+            }
+            sec = 60
+        }
+        
+        sec--
+        
+        divSecond.innerHTML = sec
+        if(sec < 10){
+            divSecond.innerHTML = "0" +   sec  
+        }
+
+        divMinute.innerHTML = minute
+        if(minute < 10){
+            divMinute.innerHTML = "0" +   minute  
+        }
+
+        console.log(minute, sec)
+    }, 1000)
+    
+    
+    // if(minute < 10){
+    //     divMinute.innerHTML = "0" +   minute  
+    // }
+    // else{
+    //     divMinute.innerHTML = minute
+    // }
+    
+    
+    
+    
+}
+
+
+// console.log()
